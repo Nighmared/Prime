@@ -39,4 +39,3 @@ def export(list,name):
 		file.write(str(x)+'\n')
 	file.close()
 	print('export finished ({})'.format(name))
-#goforit(1000000)
