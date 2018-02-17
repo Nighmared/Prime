@@ -23,8 +23,11 @@ def goforit(range=100000):
 			print('{0}%'.format(round(((x/range)*100),0)))
 	export(PRIME,range)
 def sqrt(x):
+	'''Simple Square root Function
+	Will Return Square Root of x Argument'''
 	return(x**0.5)
 def limit(x):
+	'''Used to limit the range of primes that are tested to the ones smaller than the square root of x'''
 	PRIMEF = []
 	sx = sqrt(x)
 	for y in PRIME:
@@ -33,9 +36,13 @@ def limit(x):
 		PRIMEF.append(y)
 	return(PRIMEF)
 def export(list,name):
+	'''Writes given list into a csv file
+	name argument will be the files name'''
 	namestr = str(name)+'.csv'
 	file = open(namestr,'w')
 	for x in list:
 		file.write(str(x)+'\n')
 	file.close()
 	print('export finished ({})'.format(name))
+
+goforit(100000)
