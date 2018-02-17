@@ -26,6 +26,7 @@ def goforit(range=100000):
 			print('{0}%'.format(round(((x/range)*100),0)))
 	export(PRIME,range)
 
+
 def export(list,name):
 	'''Writes given list into a csv file
 	name argument will be the files name'''
