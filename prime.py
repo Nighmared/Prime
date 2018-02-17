@@ -8,7 +8,7 @@ def goforit(range=100000):
 	nighmared.github.io'''
 	x = 1
 	counter =0
-	while x<range+1:
+	while x<range:
 		x+=2
 		counter +=1
 		isprime = True
@@ -19,7 +19,7 @@ def goforit(range=100000):
 			if x%y ==0:
 				isprime = False
 				break
-		if isprime and x !=1 and x!=0 and x not in PRIME:
+		if isprime and x !=1 and x!=0 and x<range:
 			PRIME.append(x)
 		if counter>(range/200):
 			counter = 0
@@ -37,4 +37,4 @@ def export(list,name):
 	file.close()
 	print('export finished ({})'.format(name))
 
-goforit(100000)
+goforit(100)
