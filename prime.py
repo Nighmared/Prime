@@ -37,4 +37,4 @@ def export(list,name):
 	file.close()
 	print('export finished ({})'.format(name))
 
-goforit(100)
+goforit(10000000)
