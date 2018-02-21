@@ -48,4 +48,4 @@ def export(list,name,output=True):
 		return('export finished ({})'.format(name))
 
 
-#goforit(1000000)
+#goforit(100000)

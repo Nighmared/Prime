@@ -1,4 +1,8 @@
-from tkinter import *
+# coding= UTF-8
+try:
+	from Tkinter import *
+except:
+	from tkinter import *
 import prime as pr
 
 BG_COL = 'white'
