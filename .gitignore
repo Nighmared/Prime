@@ -1,2 +1,7 @@
 
 1000000000.csv
+*.pyc
+*.pyc
+__pycache__/prime.cpython-36.pyc
+.DS_Store
+*.pyc
