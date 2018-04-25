@@ -103,6 +103,7 @@ def getfile(file):
 	f = open(file).read().split()
 	return f
 
+
 wt = Label(master,text="Bei sehr hohen Range Werten kann die Berechnung einige Minuten in Anspruch nehmen.\n Das Programm hat sich aber, auch wenn Windows das anders sieht, nicht aufgehangen!", fg="green",bg="yellow")
 wt.pack()
 t = Label(master,text="Range eingeben",bg=BG_COL)
