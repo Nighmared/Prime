@@ -1,3 +1,5 @@
+import sys
+
 
 
 
@@ -47,5 +49,4 @@ def export(list,name,output=True):
 	else:
 		return('export finished ({})'.format(name))
 
-
-#goforit(100000)
+goforit(int(sys.argv[1]))

@@ -3,11 +3,15 @@ try:
 	from Tkinter import *
 except:
 	from tkinter import *
-import prime as pr
+try:
+	import prime36 as pr
+except:
+	import prime as pr
 
 BG_COL = 'white'
+GEN_LIMIT = 50000000
 master = Tk()
-master.title("Primes")
+master.title("Primes by nighmared")
 master.minsize(width=500,height=100)
 master['bg'] = BG_COL
 GenList = []
@@ -18,9 +22,8 @@ def importold():
 	l.delete(0,END)
 	f = open('genlist.txt').read().split(',')
 	for e in f:
-		GenList.append(e)
-		e += '.csv'
-		l.insert(END,e)
+		GenList.append(int(e))
+		l.insert(END,('{}.csv'.format(e)))
 def exportold():
 	global GenList
 	if GenList:
@@ -32,7 +35,12 @@ def exportold():
 				f.write(str(e)+',')
 			else:
 				f.write(str(e))
-
+def RLgend():
+	GenList.sort()
+	l.delete(0,END)
+	for i in GenList:
+		l.insert(END,i)
+	
 def quitt(event=0):
 	global master
 	master.destroy()
@@ -46,10 +54,7 @@ def quittl(event):
 def getinput():
 	t2['text'] = ""
 	try:
-		if int(e.get())>50000000:
-			t2['text'] = "Range zu hoch, das Maximum beträgt 50'000'000"
-		else:
-			return int(e.get())
+		return int(e.get())
 	except ValueError:
 		t2['text'] = "Ungültige Eingabe"
 		e.delete(0,END)
@@ -63,25 +68,28 @@ def run():
 	resT['text'] = ''
 	RNG = getinput()
 	e.delete(0,END)
-	if not RNG == False:
+	if not RNG == False and RNG<=GEN_LIMIT:
 		fname = str(RNG)+'.csv'
 		if not fname in l.get(0,END):
 			pr.goforit(RNG,False)
 			resT['text']= 'Datei als {} exportiert'.format(fname)
-			l.insert(END,fname)
-			l.see(END)
-			GenList.append(RNG)
+			GenList.append(int(RNG))
+			RLgend()
+			l.see(GenList.index(RNG))
+			l.select_set(GenList.index(RNG))
 		else:
-			for x in range(0,len(l.get(0,END))+1):
-				resT['text']= 'Datei existiert schon'
-				if l.get(x) == fname:
-					l.select_set(x)
-					l.see(x)
+			resT['text']= 'Datei existiert schon'
+			l.select_set(GenList.index(RNG))
+			l.see(GenList.index(RNG))
+	elif RNG>GEN_LIMIT:
+		t2['text'] = 'Ungültige Range, das Maximum ist {}'.format(GEN_LIMIT)
 
 def giveit(event):
 	index = (l.nearest(event.y))
 	try: openup(l.get(0,END)[index])
 	except IndexError: None
+
+#ListViewer window
 
 def openup(file):
 	global TL
@@ -106,6 +114,9 @@ def openup(file):
 def getfile(file):
 	f = open(file).read().split()
 	return f
+
+
+
 
 wt = Label(master,text="Bei sehr hohen Range Werten kann die Berechnung einige Minuten in Anspruch nehmen.\n Das Programm hat sich aber, auch wenn Windows das anders sieht, nicht aufgehangen!", fg="green",bg="yellow")
 wt.pack()
