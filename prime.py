@@ -49,4 +49,6 @@ def export(list,name,output=True):
 	else:
 		return('export finished ({})'.format(name))
 
-goforit(int(sys.argv[1]))
+try: goforit(int(sys.argv[1]))
+except IndexError:
+	None
