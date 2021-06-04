@@ -10,7 +10,7 @@ def goforit(range=100000,output=True):
 	default range is 100'000
 	Have fun, (c) Nighmared
 	----
-	nighmared.github.io'''
+	nighmared.tech'''
 	x = 1
 	counter =0
 	while x<range:
